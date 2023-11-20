@@ -9,6 +9,7 @@ REQUEST_TIMEOUT = 10  # seconds
 class ApiClient:
     def __init__(self, api_key: str) -> None:
         self.api_key = api_key
+        print("ok")
         self.headers = {"Authorization": f"Bearer {api_key}"}
 
     def get(self, url: str) -> dict:
