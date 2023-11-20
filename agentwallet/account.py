@@ -22,7 +22,9 @@ class Account:
             for rt in raw_transactions:
                 transactions.append(Transaction(**rt))
             return Wallet(
-                _api_client=self.api_client, transactions=transactions, **response["wallet"]
+                _api_client=self.api_client,
+                transactions=transactions,
+                **response["wallet"],
             )
 
     def get_wallets(self) -> List[Wallet]:
