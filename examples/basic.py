@@ -1,3 +1,15 @@
 from agentwallet import Account
 
-account = Account()
+print("Agent Wallet Python SDK example")
+print("================================")
+account = Account.from_key("agent-hoster-123")
+print("Fetching wallets...")
+wallets = account.get_wallets()
+print(f"Wallets: {account.get_wallets()}")
+print(f"Fetching wallet {wallets[0].wallet_uid}")
+wallet = account.get_wallet(wallets[0].wallet_uid)
+print(f"Wallet {wallets[0].wallet_uid}: {wallet}")
+transfer_ok = wallet.transfer("email2@email.com", 100)
+print(f"Transfer successful: {transfer_ok}")
+balance = wallet.balance()
+print("New balance: ${:.2f}".format(balance / 100))
