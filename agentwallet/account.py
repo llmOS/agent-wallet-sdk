@@ -15,7 +15,7 @@ class Account:
         return cls(api_key)
 
     def get_wallet(self, wallet_uid: str) -> Optional[Wallet]:
-        response = self.api_client.get(f"wallets/{wallet_uid}/")
+        response = self.api_client.get(f"wallets/{wallet_uid}")
         if response.get("wallet"):
             transactions = []
             raw_transactions = response["wallet"].pop("transactions")
