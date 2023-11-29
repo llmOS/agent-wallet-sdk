@@ -36,8 +36,8 @@ class Wallet:
         return self.balance_usd_cents
 
     def get_card(self, agent_name: str) -> Optional[Card]:
-        data = {"agent_name": agent_name}
-        response = self._api_client.get(f"wallets/{self.wallet_uid}/card", data)
+        url = f"wallets/{self.wallet_uid}/card?card_name={agent_name}"
+        response = self._api_client.get(url)
         if response:
             card_dict = response["card"]
             return Card(
