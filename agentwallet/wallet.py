@@ -6,6 +6,14 @@ from .transaction import Transaction
 
 
 @dataclass
+class Card:
+    card_name: str
+    card_number: str
+    expiry: str
+    cvv: str
+
+
+@dataclass
 class Wallet:
     _api_client: ApiClient = field(repr=False, compare=False)
     wallet_uid: str
@@ -26,3 +34,15 @@ class Wallet:
         response = self._api_client.get(f"wallets/{self.wallet_uid}/")
         self.balance_usd_cents = response["wallet"]["balance_usd_cents"]
         return self.balance_usd_cents
+
+    def get_card(self, agent_name: str) -> Optional[Card]:
+        data = {"agent_name": agent_name}
+        response = self._api_client.get(f"wallets/{self.wallet_uid}/card", data)
+        if response:
+            card_dict = response["card"]
+            return Card(
+                card_name=card_dict["card_name"],
+                card_number=card_dict["card_number"],
+                expiry=card_dict["expiry"],
+                cvv=card_dict["cvv"],
+            )

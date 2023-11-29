@@ -1,4 +1,8 @@
+import json
 import os
+from typing import Dict
+from typing import Optional
+
 import requests
 from .exceptions import APIException, InvalidCredentialsException
 
@@ -11,11 +15,12 @@ class ApiClient:
         self.api_key = api_key
         self.headers = {"Authorization": f"Bearer {api_key}"}
 
-    def get(self, url: str) -> dict:
+    def get(self, url: str, data: Optional[Dict] = None) -> dict:
         response = requests.get(
             f"{AGENT_WALLET_BASE_URL}{url}",
             headers=self.headers,
             timeout=REQUEST_TIMEOUT,
+            data=json.dumps(data)
         )
         return self._handle_response(response)
 
