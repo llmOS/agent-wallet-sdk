@@ -1,6 +1,7 @@
 from typing import List
 from typing import Optional
 
+from .agent import Agent
 from .wallet import Wallet
 from .transaction import Transaction
 from .api_client import ApiClient
@@ -33,3 +34,10 @@ class Account:
         for w in response["wallets"]:
             wallets.append(Wallet(_api_client=self.api_client, **w))
         return wallets
+
+    def get_agents(self) -> List[Agent]:
+        response = self.api_client.get("agents")
+        agents = []
+        for w in response["agents"]:
+            agents.append(Agent(_api_client=self.api_client, **w))
+        return agents

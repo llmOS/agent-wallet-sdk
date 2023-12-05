@@ -1,12 +1,11 @@
-import json
 import os
-from typing import Dict
-from typing import Optional
-
 import requests
+from urllib.parse import urljoin
 from .exceptions import APIException, InvalidCredentialsException
 
-AGENT_WALLET_BASE_URL = os.getenv("AGENT_WALLET_BASE_URL", "https://testwallet.sidekik.ai/")
+AGENT_WALLET_BASE_URL = os.getenv(
+    "AGENT_WALLET_BASE_URL", "https://testwallet.sidekik.ai"
+)
 REQUEST_TIMEOUT = 10  # seconds
 
 
@@ -17,7 +16,7 @@ class ApiClient:
 
     def get(self, url: str) -> dict:
         response = requests.get(
-            f"{AGENT_WALLET_BASE_URL}{url}",
+            urljoin(AGENT_WALLET_BASE_URL, url),
             headers=self.headers,
             timeout=REQUEST_TIMEOUT,
         )
@@ -25,7 +24,7 @@ class ApiClient:
 
     def post(self, url: str, data: dict) -> dict:
         response = requests.post(
-            f"{AGENT_WALLET_BASE_URL}{url}",
+            urljoin(AGENT_WALLET_BASE_URL, url),
             headers=self.headers,
             json=data,
             timeout=REQUEST_TIMEOUT,
