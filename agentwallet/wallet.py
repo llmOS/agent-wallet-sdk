@@ -31,7 +31,7 @@ class Wallet:
         return response["response"] == "OK"
 
     def balance(self) -> int:
-        response = self._api_client.get(f"wallets/{self.wallet_uid}/")
+        response = self._api_client.get(f"wallets/{self.wallet_uid}")
         self.balance_usd_cents = response["wallet"]["balance_usd_cents"]
         return self.balance_usd_cents
 
