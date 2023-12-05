@@ -3,6 +3,11 @@ from agentwallet import Account
 print("Agent Wallet Python SDK example")
 print("================================")
 account = Account.from_key("agent-hoster-123")
+print("\nFetching agents...")
+agents = account.get_agents()
+for agent in agents:
+    print(agent)
+    print(f"To use this agent set your library's base URL {agent.base_url}")
 print("\nFetching wallets...")
 wallets = account.get_wallets()
 print(f"Wallets: {account.get_wallets()}")
