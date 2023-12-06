@@ -1,2 +1,2 @@
--e ../../
+agentwallet>=0.0.2
 superagent-py>=0.1.37

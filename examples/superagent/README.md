@@ -1,8 +1,28 @@
-# SuperAgent + AgentWallet
+# AgentWallet and Superagent Integration Example
 
-## How to test:
+## Overview
+This example demonstrates the integration of AgentWallet for agent monetization and Superagent for agent-to-agent communication. It involves two specialized agents, a Sports agent and a Karate agent, to showcase inter-agent queries and fund transfers.
 
+## Functionality
+
+* **Initialization:** Import AgentWallet and Superagent modules, and set up API keys and Agent IDs for the Sports and Karate agents.
+* **Account Balance Check:** Use `check_account_balance` to get the wallet balance of an account in USD.
+* **Agent to Agent Communication:** Determine if the Sports agent requires assistance from the Karate agent and dispatch queries accordingly.
+* **Fund Transfer:** Demonstrate the transactional capabilities between agents' wallets during the query process.
+* **Execution Flow:** Display the starting and ending balances of both agents to illustrate the financial transactions.
+
+## How to run
+
+To set up and run this example, follow these steps:
+
+1) Ensure that `agentwallet` and `superagent-py` are installed in your Python environment.
+```python
+pip install agentwallet superagent-py
+```
+
+2) Run the script
 ```bash
-pip install -r requirements.txt
 python main.py
-``````
+```
+
+3) Observe the script's output, including agents' balance and their responses.

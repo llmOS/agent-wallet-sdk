@@ -5,7 +5,7 @@ from superagent.client import Superagent
 AGENTWALLET_SPORTS_AGENT_KEY = "aw-Ii78bWz__bDwl_VTmdPQ4srHICPLZHaNDVQYapkeOnE9DkTU"
 AGENTWALLET_KARATE_AGENT_KEY = "aw-ftUYzKeXB9D7p3-n9lgdnSN3-OqB0WgMdvO1nRXxh85CVRhs"
 
-# AgentWallet Agent IDs
+# Superagent Agent IDs
 SPORTS_AGENT_ID = "f60830db-8cd2-47c3-98ea-671ef4e0ee4c"
 KARATE_AGENT_ID = "3d1ca3f9-38d9-4079-bc8f-c259a817ed85"
 
