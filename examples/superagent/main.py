@@ -36,7 +36,7 @@ def is_help_needed(prediction: str) -> str:
 def query_agent_1(question: str) -> str:
     # initialize Superagent client with AgentWallet base URL and API key
     client = Superagent(
-        base_url="https://testwallet.sidekik.ai/agents/krešimir",
+        base_url="https://testwallet.sidekik.ai/agents/sports",
         token=AGENTWALLET_SPORTS_AGENT_KEY,
     )
     # ask agent a question
@@ -50,7 +50,7 @@ def query_agent_1(question: str) -> str:
     if help is not None:
         print(f"Karate agent: {help}")
     else:
-        print(f"Olympic agent: {prediction.data['output']}")
+        print(f"Sports agent: {prediction.data['output']}")
 
 
 def query_agent_2(question: str) -> str:
