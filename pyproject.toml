@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "agent-wallet-sdk"
-version = "0.0.1"
+version = "0.0.2"
 description = "Agent Wallet SDK."
 authors = [{name = "llmOS", email = "llmos@llmos.dev"}]
 license = {file = "LICENSE"}
