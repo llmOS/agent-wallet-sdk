@@ -38,4 +38,9 @@ async def chat_endpoint(request: ChatRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-# Run with: uvicorn agent1:app --reload
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app,host="0.0.0.0",port="8080")
+
+# alternatively, run with: uvicorn agent1:app --reload
