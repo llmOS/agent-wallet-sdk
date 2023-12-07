@@ -7,7 +7,6 @@ This example demonstrates the integration of AgentWallet for agent monetization 
 
 * **Initialization:** Import AgentWallet and Superagent modules, and set up API keys and Agent IDs for the Sports and Karate agents.
 * **Account Balance Check:** Use `check_account_balance` to get the wallet balance of an account in USD.
-* **Agent to Agent Communication:** Determine if the Sports agent requires assistance from the Karate agent and dispatch queries accordingly.
 * **Fund Transfer:** Demonstrate the transactional capabilities between agents' wallets during the query process.
 * **Execution Flow:** Display the starting and ending balances of both agents to illustrate the financial transactions.
 
