@@ -1,11 +1,23 @@
-from fastapi import FastAPI, HTTPException, Request, Depends, Security
-from fastapi.security.api_key import APIKeyHeader, APIKey
+from fastapi import FastAPI, HTTPException, Depends, Security
+from fastapi.security.api_key import APIKeyHeader
+from typing import List, Optional, Union, Dict
+from pydantic import BaseModel, Field
 from pydantic import BaseModel
 from autogen import AssistantAgent, UserProxyAgent, config_list_from_json
 
+
+class Message(BaseModel):
+    content: Optional[str] = Field(
+        description="The contents of the message."
+    )
+    role: str = Field(description="Role")
+
 # Define a model for the request body
-class ChatRequest(BaseModel):
-    message: str
+class ChatCompletionRequest(BaseModel):
+    messages: List[Message] = Field(
+        ..., description="A list of messages comprising the conversation so far. "
+    )
+
 
 # Initialize FastAPI app
 app = FastAPI()
@@ -25,18 +37,25 @@ assistant = AssistantAgent("assistant", llm_config={"config_list": config_list})
 user_proxy = UserProxyAgent("user_proxy", human_input_mode="NEVER", max_consecutive_auto_reply=0, code_execution_config=False)
 
 
-@app.post("/chat", dependencies=[Depends(get_api_key)])
-async def chat_endpoint(request: ChatRequest):
-    try:
-        # Call user_proxy.initiate_chat with the request message
-        user_proxy.initiate_chat(assistant, message=request.message)
-        last_message = assistant.last_message()
+@app.post(
+    "/chat/completions",
+)
+async def openai_chat_endpoint(request: ChatCompletionRequest, dependencies=[Depends(get_api_key)]):
+    input_message = request.messages[-1].content # Ignore all messages except the last one
+    user_proxy.initiate_chat(assistant, message=input_message)
+    last_message = assistant.last_message()
 
-        response = last_message
-
-        return response
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+    result = {
+        "choices": [
+            {
+                "finish_reason": "stop",
+                "index": 0,
+                "message": last_message
+            }
+        ],
+        "model": "autogen-assistant"
+    }
+    return result
 
 
 if __name__ == "__main__":
@@ -44,3 +63,5 @@ if __name__ == "__main__":
     uvicorn.run(app,host="0.0.0.0",port="8080")
 
 # alternatively, run with: uvicorn agent1:app --reload
+
+

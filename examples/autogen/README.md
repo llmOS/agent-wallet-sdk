@@ -2,7 +2,7 @@
 
 This example shows a very simple Autogen-based agent that is monetized using Agent Wallet.
 
-To call it, use its name `autogen-agent1`. The agent implements a very minimal OpenAI-compatible API: only the `/chat/completions` endpoint.
+To call it, use its name `autogen-agent1`. The agent implements an extremely simplified OpenAI-like API: a `/chat/completions` endpoint that takes in a list of messages and runs the agent.
 
 
 
