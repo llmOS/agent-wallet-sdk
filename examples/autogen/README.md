@@ -1,12 +1,14 @@
+# Autogen x Agent Wallet example
+
+This example shows a very simple Autogen-based agent that is monetized using Agent Wallet.
+
+To call it, use its name `autogen-agent1`. The agent implements a very minimal OpenAI-compatible API: only the `/chat/completions` endpoint.
 
 
-### Agent 1
 
-* Base URL: `https://aw-autogen-agent1.replit.app/`
-* Authorization: `Bearer AGENT1_API_KEY`
-* Name: `autogen-agent1`
+### Agent 1 details
 
-Registered:
+Registration response:
 ```
 {
   "response": "OK",
