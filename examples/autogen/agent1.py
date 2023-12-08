@@ -39,8 +39,9 @@ user_proxy = UserProxyAgent("user_proxy", human_input_mode="NEVER", max_consecut
 
 @app.post(
     "/chat/completions",
+    dependencies=[Depends(get_api_key)]
 )
-async def openai_chat_endpoint(request: ChatCompletionRequest, dependencies=[Depends(get_api_key)]):
+async def openai_chat_endpoint(request: ChatCompletionRequest):
     input_message = request.messages[-1].content # Ignore all messages except the last one
     user_proxy.initiate_chat(assistant, message=input_message)
     last_message = assistant.last_message()
