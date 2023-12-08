@@ -14,7 +14,7 @@ payload = json.dumps({
 
 headers = {
   'Content-Type': 'application/json',
-  'Authorization': 'Bearer call_me_with_this_key_2' # API key to auth into speech_agent.py service (hosted on Replit)
+  'Authorization': 'Bearer call_me_with_this_key_2' # API key to auth into speech_agent.py service (example url hosted on Replit)
 }
 
 response = requests.request("POST", url, headers=headers, data=payload)
