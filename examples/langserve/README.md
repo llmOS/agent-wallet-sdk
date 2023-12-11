@@ -80,7 +80,7 @@ def verify_api_key(credentials: HTTPAuthorizationCredentials = Depends(security)
 # Set up agent API service
 app = FastAPI(dependencies=[Depends(verify_api_key)])
 ```
-Now every incoming request needs to have a `Authorization` header with a value `call_me_with_this_key`. 
+Now every incoming request needs to have an `Authorization` header with a value `call_me_with_this_key`. 
 
 **NB!** This is needed to register the agent to Agent Wallet.
 
