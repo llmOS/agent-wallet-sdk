@@ -43,7 +43,7 @@ def get_joke_agent(query: str) -> str:
     logger.info("Sucessfully called joke agent.")
     balance_after = aw_account.get_wallet(wallets[0].wallet_uid).balance_usd_cents/100
     logger.info(f"Balance AFTER calling the tool: ${balance_after}; spent ${(balance_before - balance_after):.2f}.")
-    return response["output"]["content"]
+    return response["choices"][0]["message"]["content"]
   except Exception as e:
     return f"Error: {e}"
 
