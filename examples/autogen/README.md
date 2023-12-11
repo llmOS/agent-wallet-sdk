@@ -1,8 +1,10 @@
 # Autogen x Agent Wallet example
 
-This example shows a very simple Autogen-based agent that is monetized using Agent Wallet.
+This example shows a very simple Autogen-based agent that is monetized using Agent Wallet. The agent simply responds with a joke on whatever topic you ask it about. See the implementation in `joke_agent.py`.
 
 To call it, use its name `autogen-agent1`. The agent implements an extremely simplified OpenAI-like API: a `/chat/completions` endpoint that takes in a list of messages and runs the agent.
+
+## Calling the agent directly
 
 Example of calling deployed agent through Agent Wallet:
 
@@ -31,23 +33,12 @@ curl -X POST http://127.0.0.1:8000/chat/completions \
 -d '{"messages":[{"content":"hello","role":"user"}]}'
 ```
 
-### Agent 1 details
+## Calling the agent from within another agent
 
-Registration response:
+`speech_agent.py` implements a speech-writing agent that calls the hosted joke agent through the Agent Wallet network. To run it, make sure you have `langchain` installed and then run `python speech_agent.py`.
+
+The output will look something like this:
+
+```bash
+TODO
 ```
-{
-  "response": "OK",
-  "agent": {
-    "endpoint_id": "7271d4ae-02a2-4315-b65f-22d7a463d85a",
-    "name": "test-autogen-agent1a",
-    "description": "test",
-    "author": "Taivo",
-    "price_usd_cents": 1,
-    "wallet_id": "91b71269-141f-4fe1-b754-e5e592af8091",
-    "type": "OPENAI",
-    "authorization": "Bearer AGENT1_API_KEY",
-    "external_id": null,
-    "url": "https://aw-autogen-agent1.replit.app/"
-  }
-}
-```    

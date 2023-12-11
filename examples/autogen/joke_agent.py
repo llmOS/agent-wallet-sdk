@@ -64,6 +64,6 @@ if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app,host="0.0.0.0",port="8080")
 
-# alternatively, run with: uvicorn hosted_agent:app --reload
+# alternatively, run with: uvicorn joke_agent:app --reload
 
 
