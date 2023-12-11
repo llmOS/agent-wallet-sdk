@@ -33,7 +33,8 @@ async def get_api_key(api_key_header: str = Security(api_key_header)):
 
 # Initialize your assistant and user_proxy agents
 config_list = config_list_from_json(env_or_file="OAI_CONFIG_LIST")
-assistant = AssistantAgent("assistant", llm_config={"config_list": config_list})
+assistant = AssistantAgent("assistant", llm_config={"config_list": config_list},
+                           system_message="Tell a joke about the topic given by the user.")
 user_proxy = UserProxyAgent("user_proxy", human_input_mode="NEVER", max_consecutive_auto_reply=0, code_execution_config=False)
 
 
