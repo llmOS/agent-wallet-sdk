@@ -39,7 +39,7 @@ user_proxy = UserProxyAgent("user_proxy", human_input_mode="NEVER", max_consecut
 
 
 @app.post(
-    "/chat/completions",
+    "/v1/chat/completions",
     dependencies=[Depends(get_api_key)]
 )
 async def openai_chat_endpoint(request: ChatCompletionRequest):
