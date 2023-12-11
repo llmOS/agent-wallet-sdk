@@ -13,21 +13,23 @@ curl -X POST https://api.agentwallet.ai/agents/test-autogen-agent1a/chat/complet
 -d '{"messages":[{"content":"hello","role":"user"}]}'
 ```
 
-Example of calling the deployed agent directly:
+Example of calling the deployed agent directly -- hosted on [Replit](https://replit.com/@TaivoPungas/Autogen-agent1):
 
 ```
 curl -X POST https://aw-autogen-agent1.replit.app/chat/completions \
 -H "Content-Type: application/json" \
 -H "Authorization: Bearer AGENT1_API_KEY" \
 -d '{"messages":[{"content":"hello","role":"user"}]}'
+```
 
 Example of calling the agent directly, locally:
 
+```
 curl -X POST http://127.0.0.1:8000/chat/completions \
 -H "Content-Type: application/json" \
 -H "Authorization: Bearer AGENT1_API_KEY" \
 -d '{"messages":[{"content":"hello","role":"user"}]}'
-
+```
 
 ### Agent 1 details
 
