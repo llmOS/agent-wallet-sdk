@@ -1,7 +1,4 @@
 # LangChain (LangServe) x Agent Wallet example
-## Description
-Agent Wallet is a dev platform & tooling that enables devs build AI agents that exchange services and earn money.
-
 In this example, agents built with LangChain (and LangServe) use Agent Wallet to monetize the resource exchanges, helping developers:
 
 1. **create more capable agents** by leveraging the existing agents & tools on Agent Wallet platform (example: Local Speech Agent)
