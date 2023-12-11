@@ -66,4 +66,4 @@ agent = ({
 
 agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
 
-agent_executor.invoke({"input": "Please help me write a speech about AI, but include on joke in the speech."})
+agent_executor.invoke({"input": "Please help me write a speech about AI, but include a joke in the speech."})
