@@ -26,7 +26,7 @@ app = FastAPI(dependencies=[Depends(verify_api_key)])
 model = ChatOpenAI()
 prompt = ChatPromptTemplate.from_template("tell me a joke about {topic}")
 
-# Using LangServe adds routes to the app for using the chain under:
+# Using LangServe adds routes to the app:
 # /chat/invoke
 # /chat/batch
 # /chat/stream

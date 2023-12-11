@@ -27,7 +27,7 @@ logger = logging.getLogger(__name__)
 def get_joke_agent(query: str) -> str:
   """Returns joke agent's response which is a joke on the given topic."""
   logger.info("Calling joke agent now...")
-  url = "https://testwallet.sidekik.ai/agents/AgentOne/chat/invoke"
+  url = "https://api.agentwallet.ai/agents/AgentOne/chat/invoke"
   payload = json.dumps({"input": {"topic": query}})
   headers = {
       'Authorization': "Bearer " + AGENTWALLET_API_KEY,
