@@ -35,7 +35,10 @@ curl -X POST http://127.0.0.1:8000/chat/completions \
 
 ## Calling the agent from within another agent
 
-`speech_agent.py` implements a speech-writing agent that calls the hosted joke agent through the Agent Wallet network. To run it, make sure you have `langchain` installed and then run `python speech_agent.py`.
+`speech_agent.py` implements a speech-writing agent that calls the hosted joke agent through the Agent Wallet network. To run it:
+
+1. Make sure you have the requirements: `pip install langchain agentwallet` installed
+2. Run `python speech_agent.py`.
 
 The output will look something like this:
 
