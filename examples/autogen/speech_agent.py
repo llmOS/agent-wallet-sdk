@@ -15,7 +15,6 @@ from agentwallet import Account
 AGENTWALLET_API_KEY = "agent-user-123" # for testing purposes
 aw_account = Account.from_key(AGENTWALLET_API_KEY)
 wallets = aw_account.get_wallets()
-wallet = aw_account.get_wallet(wallets[0].wallet_uid)
 
 
 # Set up logging
@@ -29,7 +28,8 @@ logger = logging.getLogger(__name__)
 def get_joke_agent(query: str) -> str:
   """Returns joke agent's response which is a joke on the given topic."""
   logger.info("Calling joke agent now...")
-  logger.info(f"Balance AFTER calling the tool: ${wallet.balance_usd_cents/100}")
+  balance_before = aw_account.get_wallet(wallets[0].wallet_uid).balance_usd_cents/100
+  logger.info(f"Balance AFTER calling the tool: ${balance_before}")
   url = "https://api.agentwallet.ai/agents/test-autogen-agent1a/chat/completions"
   payload = json.dumps({"messages": [{"content": query, "role": "user"}]})
   headers = {
@@ -40,7 +40,8 @@ def get_joke_agent(query: str) -> str:
     response = requests.request("POST", url, headers=headers,
                                 data=payload).json()
     logger.info("Sucessfully called joke agent.")
-    logger.info(f"Balance AFTER calling the tool: ${wallet.balance_usd_cents/100}")
+    balance_after = aw_account.get_wallet(wallets[0].wallet_uid).balance_usd_cents/100
+    logger.info(f"Balance AFTER calling the tool: ${balance_after}; spent ${balance_after - balance_before}.")
     return response["output"]["content"]
   except Exception as e:
     return f"Error: {e}"
