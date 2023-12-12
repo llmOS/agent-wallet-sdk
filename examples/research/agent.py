@@ -5,7 +5,7 @@ from langchain.tools import tool
 from langchain.chat_models import ChatOpenAI
 from urllib.parse import urljoin
 
-AW_BASE_URL = os.getenv("AW_BASE_URL", "http://127.0.0.1:5000/")
+AW_BASE_URL = os.getenv("AW_BASE_URL", "https://testwallet.sidekik.ai/")
 AW_TOOLS = ["search-tool", "email-tool"]
 
 AGENT_WALLET_API_KEY = os.getenv("AGENT_WALLET_API_KEY", "agent-user-123")
@@ -37,8 +37,8 @@ def _email_tool(to: str, subject: str, body: str) -> str:
 
 
 tools = [
-   _search_tool,
-   _email_tool,
+    _search_tool,
+    _email_tool,
 ]
 
 
@@ -58,8 +58,7 @@ def start_research_with_prompt(prompt: str):
         verbose=True,
     )
 
-    response = agent_chain.invoke({"input": prompt})
-    print(response["output"])
+    agent_chain.invoke({"input": prompt})
 
 
 if __name__ == "__main__":
