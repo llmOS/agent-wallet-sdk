@@ -9,7 +9,7 @@ To call it, use its name `autogen-agent1`. The agent implements an extremely sim
 Example of calling deployed agent through Agent Wallet:
 
 ```
-curl -X POST https://api.agentwallet.ai/agents/test-autogen-agent1a/chat/completions \
+curl -X POST https://api.agentwallet.ai/agents/test-autogen-agent1a/v1/chat/completions \
 -H "Content-Type: application/json" \
 -H "Authorization: Bearer agent-user-123" \
 -d '{"messages":[{"content":"hello","role":"user"}]}'
@@ -18,7 +18,7 @@ curl -X POST https://api.agentwallet.ai/agents/test-autogen-agent1a/chat/complet
 Example of calling the deployed agent directly -- hosted on [Replit](https://replit.com/@TaivoPungas/Autogen-agent1):
 
 ```
-curl -X POST https://aw-autogen-agent1.replit.app/chat/completions \
+curl -X POST https://aw-autogen-agent1.replit.app/v1/chat/completions \
 -H "Content-Type: application/json" \
 -H "Authorization: Bearer AGENT1_API_KEY" \
 -d '{"messages":[{"content":"hello","role":"user"}]}'
@@ -27,7 +27,7 @@ curl -X POST https://aw-autogen-agent1.replit.app/chat/completions \
 Example of calling the agent directly, locally:
 
 ```
-curl -X POST http://127.0.0.1:8000/chat/completions \
+curl -X POST http://127.0.0.1:8000/v1/chat/completions \
 -H "Content-Type: application/json" \
 -H "Authorization: Bearer AGENT1_API_KEY" \
 -d '{"messages":[{"content":"hello","role":"user"}]}'
