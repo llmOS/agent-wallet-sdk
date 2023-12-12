@@ -8,12 +8,12 @@ from urllib.parse import urljoin
 AW_BASE_URL = os.getenv("AW_BASE_URL", "http://127.0.0.1:5000/")
 AW_TOOLS = ["search-tool", "email-tool"]
 
-AW_API_KEY = "agent-user-123"
+AGENT_WALLET_API_KEY = os.getenv("AGENT_WALLET_API_KEY", "agent-user-123")
 
 
-def call_tool(tool_name: str, tool_input: dict) -> str:
+def _call_tool(tool_name: str, tool_input: dict) -> str:
     if tool_name in AW_TOOLS:
-        headers = {"Authorization": f"Bearer {AW_API_KEY}"}
+        headers = {"Authorization": f"Bearer {AGENT_WALLET_API_KEY}"}
         response = requests.post(
             url=urljoin(AW_BASE_URL, f"/tools/{tool_name}"),
             json=tool_input,
@@ -25,20 +25,20 @@ def call_tool(tool_name: str, tool_input: dict) -> str:
 
 
 @tool("search-tool")
-def search_tool(query: str) -> str:
+def _search_tool(query: str) -> str:
     """Searches the web for the query."""
-    return str(call_tool("search-tool", {"query": query}))
+    return str(_call_tool("search-tool", {"query": query}))
 
 
 @tool("email-tool")
-def email_tool(to: str, subject: str, body: str) -> str:
+def _email_tool(to: str, subject: str, body: str) -> str:
     """Sends an email to an address with a subject and body in HTML format."""
-    return str(call_tool("email-tool", {"to": to, "subject": subject, "body": body}))
+    return str(_call_tool("email-tool", {"to": to, "subject": subject, "body": body}))
 
 
 tools = [
-    search_tool,
-    email_tool,
+   _search_tool,
+   _email_tool,
 ]
 
 
