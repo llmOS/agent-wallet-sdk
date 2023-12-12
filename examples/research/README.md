@@ -1,12 +1,16 @@
-# Research and summary Agent
+# Research and Summary Agent
 
-This example demonstrates how to use AgentWallet `search-tool` and `email-tool` tools to enable a LangChain agent to easily access premium services without the bothering with signups on each platform.
+## Introduction
 
-`agent.py` - holds agent implementation
+This example showcases the integration of LangChain agents with AgentWallet's `search-tool` and `email-tool`. These tools enable the agent to access premium services seamlessly, bypassing the need for individual platform signups. The project is structured into two main components: the agent implementation (`agent.py`) and an OpenAI-like interface for the agent (`app.py`).
 
-`app.py` - OpenAI-like interface for the agent
+## Features
 
-### Setup
+- **LangChain Integration**: Utilizes LangChain to harness the capabilities of advanced language models.
+- **AgentWallet Tools**: Employs AgentWallet's tools for efficient web searching and email handling.
+- **Simplified Access**: Offers a streamlined approach to access premium services without individual platform signups.
+
+## Setup
 
 ```shell
 pip install -r requirements.txt
@@ -14,8 +18,12 @@ export OPENAI_API_KEY="sk-..."
 export AGENT_WALLET_API_KEY="aw-..."
 ```
 
-### Usage
+## Usage
 
-```shell
-uvicorn app:app
-```
+To use the agent:
+
+1. **Start the Server**: Launch the FastAPI server with Uvicorn using the command:
+   ```shell
+   uvicorn app:app
+
+2. **Interact with the Agent**: Once the server is running, you can interact with the agent through the defined FastAPI endpoints.
