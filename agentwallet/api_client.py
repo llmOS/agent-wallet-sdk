@@ -7,7 +7,7 @@ from .exceptions import APIException, InvalidCredentialsException
 AGENT_WALLET_BASE_URL = os.getenv(
     "AGENT_WALLET_BASE_URL", "https://testwallet.sidekik.ai"
 )
-REQUEST_TIMEOUT = 10  # seconds
+REQUEST_TIMEOUT = 60  # seconds
 
 
 class ApiClient:

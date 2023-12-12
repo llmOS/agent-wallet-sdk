@@ -18,6 +18,7 @@ class AgentType(str, Enum):
 class Agent:
     _api_client: ApiClient = field(repr=False, compare=False)
     type: AgentType
+    external_id: str
     endpoint_id: str
     name: str
     description: str
@@ -40,7 +41,7 @@ class Agent:
             case AgentType.AGENTPROTOCOL:
                 return {"query": query}
             case AgentType.SUPERAGENT_SH:
-                return {"query": query}
+                return {"input": query, "enableStreaming": False}
             case AgentType.LANGSERVE:
                 return {"input": {"topic": query}}
             case _:
@@ -51,7 +52,7 @@ class Agent:
             case AgentType.AGENTPROTOCOL:
                 return urljoin(self.base_url, "query")
             case AgentType.SUPERAGENT_SH:
-                return urljoin(self.base_url, "invoke")
+                return urljoin(self.base_url, f"api/v1/agents/{self.external_id}/invoke")
             case AgentType.LANGSERVE:
                 return urljoin(self.base_url, "chat/invoke")
             case _:
@@ -62,7 +63,7 @@ class Agent:
             case AgentType.AGENTPROTOCOL:
                 return response["response"]
             case AgentType.SUPERAGENT_SH:
-                return response["response"]
+                return response["data"]["output"]
             case AgentType.LANGSERVE:
                 return response["output"]["content"]
             case _:
