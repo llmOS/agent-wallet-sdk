@@ -39,7 +39,7 @@ class Agent:
     def _format_data(self, query: str) -> Dict:
         match self.type:
             case AgentType.AGENTPROTOCOL:
-                return {"query": query}
+                return {"input": query, "additional_input": {}}
             case AgentType.SUPERAGENT_SH:
                 return {"input": query, "enableStreaming": False}
             case AgentType.LANGSERVE:
@@ -50,7 +50,7 @@ class Agent:
     def _format_call_url(self) -> str:
         match self.type:
             case AgentType.AGENTPROTOCOL:
-                return urljoin(self.base_url, "query")
+                return urljoin(self.base_url, "/ap/v1/agent/tasks")
             case AgentType.SUPERAGENT_SH:
                 return urljoin(self.base_url, f"api/v1/agents/{self.external_id}/invoke")
             case AgentType.LANGSERVE:
