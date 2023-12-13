@@ -16,5 +16,5 @@ export COINMARKETCAP_API_KEY=".....-..."
 ### Usage
 
 ```shell
-python main.py --wallet_address='0xb8DF750c6cD31A4aF78cfcD1434217FF9B4489a2' --query='I want to invest in some crypto currency, please buy me some!'
+python main.py --wallet_address='0x8eff3e243f018989De45100f8A84897AC4334ba1' --query='I want to invest in some crypto currency, please buy me some!'
 ```
