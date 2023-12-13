@@ -72,8 +72,7 @@ def call_web3() -> str:
     pprint(coin)
     coin_address = coin["platform"]["token_address"]
     result = requests.post(
-        # TODO: prod url
-        "http://0.0.0.0:5000/tools/web3-uniswap-transfer",
+        "https://api.agentwallet.ai/tools/web3-uniswap-transfer",
         headers={
             "Content-Type": "application/json",
             "Authorization": f"Bearer {AGENT_WALLET_API_KEY}",
