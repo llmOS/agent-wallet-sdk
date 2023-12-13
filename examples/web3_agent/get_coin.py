@@ -19,7 +19,7 @@ def execute() -> Dict:
         coins = _get_coins()
     if not coins:
         raise Exception("Failed to get coins")
-    eth_coins = _get_crypto_coins(coins)
+    eth_coins = _get_eth_coins(coins)
     print(f"Got {len(eth_coins)} crypto currencies")
     coin_index = randrange(2, 50)
     coin = eth_coins[coin_index]
@@ -51,7 +51,7 @@ def _get_coins() -> Optional[List[Dict]]:
     return coins["data"]
 
 
-def _get_crypto_coins(coins: List[Dict]) -> List[Dict]:
+def _get_eth_coins(coins: List[Dict]) -> List[Dict]:
     filtered = []
     for c in coins:
         if (c.get("platform") or {}).get("symbol", "") == "ETH":
