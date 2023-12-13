@@ -5,7 +5,7 @@ from urllib.parse import urljoin
 from .exceptions import APIException, InvalidCredentialsException
 
 AGENT_WALLET_BASE_URL = os.getenv(
-    "AGENT_WALLET_BASE_URL", "https://testwallet.sidekik.ai"
+    "AGENT_WALLET_BASE_URL", "https://api.agentwallet.ai/"
 )
 REQUEST_TIMEOUT = 60  # seconds
 
