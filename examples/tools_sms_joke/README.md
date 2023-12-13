@@ -13,5 +13,5 @@ export AGENT_WALLET_API_KEY="aw-..."
 ### Usage
 
 ```shell
-python main.py --phone_number="+1..."
+python main.py --phone_number='+1...'
 ```
