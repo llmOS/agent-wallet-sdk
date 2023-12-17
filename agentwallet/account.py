@@ -1,6 +1,7 @@
 from typing import List
 from typing import Optional
 
+from .tool import Tool
 from .agent import Agent
 from .agent import AgentType
 from .wallet import Wallet
@@ -37,10 +38,32 @@ class Account:
         return wallets
 
     def get_agents(self) -> List[Agent]:
-        response = self.api_client.get("agents")
+        response = self.api_client.get("dashboard/agents")
         agents = []
         for agent in response["agents"]:
             type = AgentType(agent["type"])
             agent.pop("type", None)
             agents.append(Agent(_api_client=self.api_client, type=type, **agent))
         return agents
+
+    def get_agent(self, name) -> Optional[Agent]:
+        response = self.api_client.get(f"dashboard/agents", params={"search": name})
+        if len(response["agents"]) > 0:
+            agent = response["agents"][0]
+            type = AgentType(agent["type"])
+            agent.pop("type", None)
+            return Agent(_api_client=self.api_client, type=type, **agent)
+        return None
+
+    def get_tools(self) -> List[Tool]:
+        response = self.api_client.get("tools")
+        tools = []
+        for tool in response["tools"]:
+            tools.append(Tool(_api_client=self.api_client, **tool))
+        return tools
+    
+    def get_tool(self, name: str) -> Optional[Tool]:
+        response = self.api_client.get(f"tools/{name}")
+        if response.get("tool"):
+            return Tool(_api_client=self.api_client, **response["tool"])
+        return None
